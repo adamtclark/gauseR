@@ -15,6 +15,7 @@
 #' @param A_starting Optional starting values for species interaction coefficients. If a value is set to zero, it
 #' #forces that parameter to zero in the fitting. Values of NA are ignored. Defaults to NULL (no starting values).
 #' @param doplot Logical. Should the resulting model be plotted? Defaults to TRUE.
+#' @param keeptimes Should predictions be given for the points in the "time" vector, or for a list of 100 evenly spaced time points? Defaults to FALSE.
 #' @param ... Optional additional arguments to be passed to ode and optim functions.
 #' @keywords Lokta-Volterra, Gause, interaction, optimization
 #' @return A list with simulated time series (out), paramter estimates (parameter_intervals),
@@ -36,7 +37,7 @@
 #' #run wrapper
 #' gause_out<-gause_wrapper(time=time, species=species)
 
-gause_wrapper<-function(time, species, N_starting=NULL, r_starting=NULL, A_starting=NULL, doplot=TRUE, ...) {
+gause_wrapper<-function(time, species, N_starting=NULL, r_starting=NULL, A_starting=NULL, doplot=TRUE, keeptimes=FALSE, ...) {
   #number of species
   if(is.null(dim(species))) {
     if(is.null(names(species))) {
@@ -117,7 +118,13 @@ gause_wrapper<-function(time, species, N_starting=NULL, r_starting=NULL, A_start
   parms<-numeric(length(parm_signs))
   parms[parm_signs!=0] <- exp(optout$par[-c(1:length(initialN))])*parm_signs[parm_signs!=0]
   initialN <- exp(optout$par[1:Nsp])
-  out <- deSolve::ode(y=initialN, times=seq(min(time), max(time), length=100), func=lv_interaction, parms=parms, ...)
+  if(keeptimes) {
+    timessim<-time
+  } else {
+    timessim<-seq(min(time), max(time), length=100)
+  }
+  
+  out <- deSolve::ode(y=initialN, times=timessim, func=lv_interaction, parms=parms, ...)
 
   #plot
   if(doplot) {

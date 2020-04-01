@@ -33,16 +33,18 @@ dni/dt = ni * (ri + aii * ni + sum_j(aij * nj))
 
 \examples{
 #primary wrapper function
-?gause_wrapper       # automatically runs functions to get starting values and fit
-                     # paramter vales using simulated ODE dynamics.
+?gause_wrapper        # automatically runs functions to get starting values and fit
+                      # paramter vales using simulated ODE dynamics.
 
 #individual functions
-?get_lag             # generate time-lagged variables for estimating per-capita growth
-?percap_growth       # generate estimates of per-capita growth rates for species
-?get_logistic        # logistic growth function
-?lv_interaction      # function for simulating Lotka-Voterra ODE models
-?lv_interaction_log  # a version of the lv_interaction computed in log abundance space,
-                     # which typically works better for optimization
-?lv_optim            # methods for fitting complex n-species models
-?ode_prediction      # generic function for simulating time series, to be used with other optimizers
+?get_lag              # generate time-lagged variables for estimating per-capita growth
+?percap_growth        # generate estimates of per-capita growth rates for species
+?get_logistic         # logistic growth function
+?lv_interaction       # function for simulating Lotka-Voterra ODE models
+?lv_interaction_log   # a version of the lv_interaction computed in log abundance space,
+                      # which typically works better for optimization
+?lv_optim             # methods for fitting complex n-species models
+?test_goodness_of_fit # tests goodness of fit of model results, with an R2-like statistic
+?ode_prediction       # generic function for simulating time series,
+                      # to be used with other optimizers
 }

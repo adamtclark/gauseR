@@ -38,7 +38,9 @@
 #' # > 0.9 for both time series - these are good fits!
 
 test_goodness_of_fit<-function(observed, predicted, bycolumn = FALSE, droptimecol = TRUE) {
-  if(!is.null(dim(predicted)) & )
+  if(!is.null(dim(predicted)) & droptimecol) {
+    predicted[,"time"]<-NULL #drop time column
+  }
   
   
   if(length(observed)!=length(predicted)) {
