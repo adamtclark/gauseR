@@ -39,16 +39,16 @@
 
 test_goodness_of_fit<-function(observed, predicted, bycolumn = FALSE, droptimecol = TRUE) {
   if(!is.null(dim(predicted)) & droptimecol) {
-    predicted[,"time"]<-NULL #drop time column
-  }
-  
-  
-  if(length(observed)!=length(predicted)) {
-    return("error: observed and predicted must be the same length")
+    predicted<-data.frame(predicted)
+    predicted$time<-NULL #drop time column
   }
   
   observed<-as.matrix(observed)
   predicted<-as.matrix(predicted)
+  
+  if(length(observed)!=length(predicted)) {
+    return("error: observed and predicted must be the same length")
+  }
   
   if(!bycolumn || is.null(dim(observed))) {
     result<-(1-mean((observed-predicted)^2, na.rm=T)/
