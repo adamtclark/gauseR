@@ -1,17 +1,20 @@
 Package: gauseR
-Title: Simple methods for fitting Lotka-Volterra models describing Gause’s “Struggle for Existence”
+Title: Simple Methods for Fitting Lotka-Volterra Models Describing Gause’s 'Struggle for Existence'
 Version: 1.0
 Authors@R: c(person("Adam", "Clark", role = c("aut", "cre"),
 					email = c("adam.tclark@gmail.com"),
                     comment = c(ORCID = "0000-0002-8843-3278")),
              person("Lina", "Mühlbauer", role = c("aut")),  
              person("Maximilienne", "Schulze", role = c("aut")))
-Description: A collection of tools and data for analyzing the Gause microcosm experiments, and for fitting Lotka-Volterra models to time series data. Includes methods for fitting single-species logistic growth, and multi-species interaction models, e.g. of competition, predator/prey relationships, or mutualism. See documentation for individual functions for examples. In general, see the lv_optim function for examples of how to fit parameter values in multi-species systems. Note that the general methods applied here, as well as the form of the differential equations that we use, are described in detail in the Quantitative Ecology textbook by Lehman et al., available at http://hdl.handle.net/11299/204551.
+Description: A collection of tools and data for analyzing the Gause microcosm experiments, and for fitting Lotka-Volterra models to time series data. Includes methods for fitting single-species logistic growth, and multi-species interaction models, e.g. of competition, predator/prey relationships, or mutualism. See documentation for individual functions for examples. In general, see the lv_optim function for examples of how to fit parameter values in multi-species systems. Note that the general methods applied here, as well as the form of the differential equations that we use, are described in detail in the Quantitative Ecology textbook by Lehman et al., available at <http://hdl.handle.net/11299/204551>.
 Imports:
 	deSolve,
 	stats,
 	graphics
-License: GPL-3
+Suggests:
+	knitr, rmarkdown
+VignetteBuilder: knitr
+License: GPL-3 + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.0.2

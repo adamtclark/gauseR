@@ -1,0 +1,272 @@
+---
+title: "Example Analyses in gauseR"
+author: "Lina K. Mühlbauer, Maximilienne Schulze, and Adam T. Clark"
+date: "4/1/2020"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Example Analyses in gauseR}
+  %\VignetteEngine{knitr::rmarkdown}
+  \usepackage[utf8]{inputenc}
+---
+
+## The GauseR package
+
+The GauseR package includes tools and data for analyzing the Gause microcosm experiments, and for fitting Lotka-Volterra models to time series data.
+
+Below, we will demonstrate some of the basic features of this package, including several optimization methods, a function for calculating the goodness of fit for models, and an automated wrapper function. Note that the general methods applied here, as well as the form of the differential equations that we use, are described in detail in the Quantitative Ecology textbook by Lehman et al., available at <http://hdl.handle.net/11299/204551>. The full R package, and accompanying documentation, is available at <https://github.com/adamtclark/gauseR>.
+
+
+## Linearized estimates
+
+As a first example, we will use data from Gause's experiments with Paramecium. The plotted data in the figure below shows the logistic growth of *Paramecium aurelia* in monoculture.
+
+```{r}
+# load package
+require(gauseR)
+
+# load data
+data(gause_1934_book_f22)
+
+logistic_data<-gause_1934_book_f22[gause_1934_book_f22$Treatment=="Pa",]
+
+plot(Volume_Species2~Day, logistic_data)
+```
+
+We will use this observed data to fit a linear regression to the data points. This is necessary to extract the parameters needed for the following analysis. Therefore, we will proceed in three steps. First, we generate time-lagged data with get_lag and use this data to calculate the per capita growth rate with percap_growth. In a final step we plot the per capita growth rate against the abundance and fit the linear model to the relationship. 
+
+```{r}
+# calculate time-lagged abundance
+lagged_data<-get_lag(x=logistic_data$Volume_Species2, time = logistic_data$Day)
+
+# calculate per-capita growth rate
+lagged_data$dNNdt <- percap_growth(x = lagged_data$x, laggedx = lagged_data$laggedx, dt = lagged_data$dt)
+
+# plot relationship
+plot(dNNdt~x, lagged_data,
+     xlab="Abundance (N)",
+     ylab="Per-capita Growth Rate (dN/Ndt)",
+     xlim=c(0, 250), ylim=c(0, 1))
+abline(h=0, v=0, lty=3)
+
+# fit model to relationship
+mod<-lm(dNNdt~x, lagged_data)
+abline(mod, lwd=2, col=2)
+
+# label parameters
+arrows(25, 0.6, 1, 0.8, length = 0.1, lwd=1.5)
+text(25, 0.6, "y-intercept: r", pos=1)
+
+arrows(200, 0.4, 232, 0.01, length = 0.1, lwd=1.5)
+text(200, 0.4, "x-intercept: K", pos=3)
+
+arrows(80, predict(mod, newdata=data.frame(x=80)),
+         130, predict(mod, newdata=data.frame(x=80)),
+         length = 0.1, lwd=1.5)
+arrows(130, predict(mod, newdata=data.frame(x=80)),
+       130, predict(mod, newdata=data.frame(x=130)),
+       length = 0.1, lwd=1.5)
+text(130, predict(mod, newdata=data.frame(x=80)), "slope: aii", pos=3)
+```
+
+Recall that per-capita growth rate (i.e. growth rate divided by population size) for the logistic growth model follows the form:
+
+$$ \frac{\mathrm{d}N}{\mathrm{d}t} / N = r - a_{ii} N $$
+
+where $r$ is the intrinsic growth rate, and $a_{ii}$ is the strength of self-limitation. Note that we can read the parameters for this equation off of the figure and regression below. Here, $r$ is the y-intercept, $a_{ii}$ is the slope of the line, and the carrying capacity $K$ is the x-intercept (which can be calculated as $-r/a_{ii}$).
+
+Finally, we can compare the model estimates to the data. Because this is a model of only one species, we can make model predictions using the get_logistic function, plus the paramter estimates from the regression that we just fit.
+
+```{r}
+plot(Volume_Species2~Day, logistic_data, xlab="Day", ylab="P. aurelia Std. Volume")
+
+timelst<-seq(0, 25, by=0.1) # sequence of time values to plot
+prediction<-get_logistic(time = timelst, N0 = 0.6, r = 0.8, K=230)
+
+lines(timelst, prediction, lwd=2)
+```
+
+Look at how the line closely matches the points - this suggests that the model matches the data closely. One slight problem here is that we needed to make up a number for N0 - i.e. the initial abundance at the beginning of the experiment. For this example, we simply tried out different estimates until the model seemed to fit the data well. But, in the examples below, we will show how to achieve this a bit more elegantly using an optimizer.
+
+## Goodness of fit
+
+In many cases, we might want to be able to quantify goodness of fit, rather than just looking at a figure and testing the fit by eye. We can use the test_goodness_of_fit function to generate an R-squared-like value, based on the difference between observed and predicted lines. This value is like a classic R-squared statistic, but instead of tracking distance from a regression line, it tracks the distance of predicted points from the "1-1" line (i.e. where they perfectly fit observations). Values close to 1 indicate a good fit, whereas values at or below zero indicate a poor fit. Note that values less than zero suggest that predictions are a worse estimate than is the average value observed across observations, which is often considered the minimum threshold for a meaningful model.
+
+Note that we need to make a new set of predictions for these tests, so that only one prediction per observed time point is made.
+
+```{r}
+prediction_short<-get_logistic(time = logistic_data$Day, N0 = 0.6, r = 0.8, K=230)
+
+test_goodness_of_fit(observed = logistic_data$Volume_Species2, predicted = prediction_short)
+```
+
+Here, the goodness of fit is around 97%, which indicates that the model fits the data very closely.
+
+## The optimizer
+
+As an example for using the optimizer, we use another data set of Gause's Paramecium experiments. This predator-prey experiment shows the interaction between *Didinium nasutum* and *P. caudatum*. First, we can try to fit the model using the same three step process described above. 
+
+```{r}
+# load data from competition experiment
+data(gause_1934_book_f32)
+
+# keep all data - no separate treatments exist for this experiment
+predatorpreydata<-gause_1934_book_f32
+
+# get time-lagged observations for each species
+prey_lagged<-get_lag(x = predatorpreydata$Individuals_Prey, time = predatorpreydata$Day)
+predator_lagged<-get_lag(x = predatorpreydata$Individuals_Predator, time = predatorpreydata$Day)
+
+# calculate per-capita growth rates
+prey_dNNdt<-percap_growth(x = prey_lagged$x, laggedx = prey_lagged$laggedx, dt = prey_lagged$dt)
+predator_dNNdt<-percap_growth(x = predator_lagged$x,
+      laggedx = predator_lagged$laggedx, dt = predator_lagged$dt)
+
+# fit linear models to dNNdt, based on average
+# abundances between current and lagged time steps
+prey_mod_dat<-data.frame(prey_dNNdt=prey_dNNdt, prey=prey_lagged$laggedx,
+      predator=predator_lagged$laggedx)
+mod_prey<-lm(prey_dNNdt~prey+predator, data=prey_mod_dat)
+
+predator_mod_dat<-data.frame(predator_dNNdt=predator_dNNdt,
+      predator=predator_lagged$laggedx, prey=prey_lagged$laggedx)
+mod_predator<-lm(predator_dNNdt~predator+prey, data=predator_mod_dat)
+
+# model summaries
+summary(mod_prey)
+summary(mod_predator)
+
+# extract parameters
+# growth rates
+r1 <- unname(coef(mod_prey)["(Intercept)"])
+r2 <- unname(coef(mod_predator)["(Intercept)"])
+
+# self-limitation
+a11 <- unname(coef(mod_prey)["prey"])
+a22 <- unname(coef(mod_predator)["predator"])
+
+# effect of Pa on Pc
+a12 <- unname(coef(mod_prey)["predator"])
+# effect of Pc on Pa
+a21 <- unname(coef(mod_predator)["prey"])
+
+# run ODE:
+# make parameter vector:
+parms <- c(r1, r2, a11, a12, a21, a22)
+initialN <- c(4, 0.1)
+out <- deSolve::ode(y=initialN, times=seq(1, 17, length=100), func=lv_interaction, parms=parms)
+matplot(out[,1], out[,-1], type="l",
+        xlab="time", ylab="N", col=c("black","red"), lty=c(1,3), lwd=2, ylim=c(0, 60))
+legend("topright", c("Pc", "Dn"), col=c(1,2), lwd=2, lty=c(1,3))
+
+# now, plot in points from data
+points(predatorpreydata$Day, predatorpreydata$Individuals_Predator , col=2)
+points(predatorpreydata$Day, predatorpreydata$Individuals_Prey, col=1)
+```
+
+Sadly, it seems that the model doesn't fit very well in this case. The reason turns out not to be because the model itself is bad, but rather because the method that we are using for estimating parameters is subject to high error.
+
+One way to get around this problem is to use an optimizer to directly fit the predicted dynamics to the observed data. We can do this using the lv_optim function. Note that things get a bit complicated, because we need to set the sign of the parameters (i.e. positive or negative) before we conduct the analysis. This is because a model with too many positive coefficients will lead to unbounded growth, which will ultimately crash the optimizer. For this analysis, we simply take the signs for the parameters from the estimate that we got above from the linear regressions.
+
+```{r}
+# Data for the optimizer:
+# Must have a column with time steps labeled 'time', and
+# columns for each species in the community.
+opt_data<-data.frame(time=predatorpreydata$Day, Prey=predatorpreydata$Individuals_Prey,
+    Predator=predatorpreydata$Individuals_Predator)
+
+# Save the signs of the parameters -
+# optimizer works in log space, so these
+# must be specified separately
+parm_signs<-sign(parms)
+
+# parameter vector for optimizer -
+# must be a vector with, first, the
+# starting abundances in log space,
+# and second, the parameter values,
+# again in log space
+pars<-c(log(initialN), log(abs(parms)))
+
+# run optimizer
+optout<-optim(par = pars, fn = lv_optim, hessian = TRUE,
+             opt_data=opt_data, parm_signs=parm_signs)
+
+# extract parameter vector:
+parms <- exp(optout$par[-c(1:2)])*parm_signs
+initialN <- exp(optout$par[1:2])
+
+out <- deSolve::ode(y=initialN, times=seq(1, 17, length=100), func=lv_interaction, parms=parms)
+matplot(out[,1], out[,-1], type="l",
+        xlab="time", ylab="N", col=c("black","red"), lty=c(1,3), lwd=2, ylim=c(0, 60))
+legend("topright", c("Pc", "Dn"), col=c(1,2), lwd=2, lty=c(1,3))
+
+# now, plot in points from data
+points(predatorpreydata$Day, predatorpreydata$Individuals_Predator , col=2)
+points(predatorpreydata$Day, predatorpreydata$Individuals_Prey, col=1)
+```
+
+This process is a little complicated, but it seems to fit the data much better.
+
+## The wrapper function
+
+Finally, let's try a simpler example, tracking competitive interactions between *P. aurelia* and *P. caudatum*. Rather than going through all the coding involved in fitting the linear models and running the optimizer, we can simply run the gause_wrapper function, which automates all of these steps.
+
+```{r}
+#load competition data
+data("gause_1934_science_f02_03")
+
+#subset out data from species grown in mixture
+mixturedat<-gause_1934_science_f02_03[gause_1934_science_f02_03$Treatment=="Mixture",]
+
+#extract time and species data
+time<-mixturedat$Day
+species<-data.frame(mixturedat$Volume_Species1, mixturedat$Volume_Species2)
+colnames(species)<-c("P_caudatum", "P_aurelia")
+
+#run wrapper
+gause_out<-gause_wrapper(time=time, species=species)
+```
+
+Again, this yields a close fit between observations and model predictions.
+
+## Further examples
+
+Although the optimization method that we employ is very stable, there is one disadvantage. Because parameter signs are fixed, confidence intervals estimated from this procedure are not especially informative (since they by definition cannot cross zero).
+
+To address this problem, we also include the ode_prediction function. This function takes in parameter values and returns predictions of species abundances as a single vector. This can be useful for interfacing with other optimization functions, which can be used to produce informative confidence intervals. As an example below, we use the nls function.
+
+```{r}
+#load competition data
+data("gause_1934_science_f02_03")
+
+#subset out data from species grown in mixture
+mixturedat<-gause_1934_science_f02_03[gause_1934_science_f02_03$Treatment=="Mixture",]
+
+#extract time and species data
+time<-mixturedat$Day
+species<-data.frame(mixturedat$Volume_Species1, mixturedat$Volume_Species2)
+colnames(species)<-c("P_caudatum", "P_aurelia")
+
+#run wrapper
+gause_out<-gause_wrapper(time=time, species=species)
+
+# number of species
+N<-ncol(gause_out$rawdata)-1
+# parameters
+pars_full<-c(gause_out$parameter_intervals$mu)
+# data.frame for optimization
+fittigdata<-data.frame(y=unlist(gause_out$rawdata[,-1]),
+                       time=gause_out$rawdata$time,
+                       N=N)
+
+yest<-ode_prediction(pars_full, time=fittigdata$time, N=fittigdata$N)
+plot(fittigdata$y, yest, xlab="observation", ylab="prediction")
+abline(a=0, b=1, lty=2)
+
+#example of how to apply function, using nls()
+mod<-nls(y~ode_prediction(pars_full, time, N),
+           start = list(pars_full=pars_full),
+           data=fittigdata)
+summary(mod)
+```
+
+Note, however, that in some cases parameters will still lead to unbounded growth, which will crash most optimizers. Under these circumstances, users will have to be careful and creative - e.g. by setting informative priors in a Baysian analysis.
