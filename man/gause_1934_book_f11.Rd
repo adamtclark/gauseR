@@ -4,7 +4,7 @@
 \name{gause_1934_book_f11}
 \alias{gause_1934_book_f11}
 \title{Gause Yeast Data}
-\format{A data frame with 17 rows and 8 variables:
+\format{A data frame with 11 rows and 7 variables:
 \describe{
   \item{Paper}{Paper from which data are drawn}
   \item{Figure}{Figure number in paper}

@@ -4,7 +4,7 @@
 \name{mclaren_1994_f03}
 \alias{mclaren_1994_f03}
 \title{Wolf, Moose, and Fir dynamics from Isle Royale}
-\format{A data frame with 17 rows and 8 variables:
+\format{A data frame with 140 rows and 7 variables:
 \describe{
   \item{Paper}{Paper from which data are drawn}
   \item{Figure}{Figure number in paper}

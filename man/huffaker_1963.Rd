@@ -4,7 +4,7 @@
 \name{huffaker_1963}
 \alias{huffaker_1963}
 \title{Huffaker Mite Data}
-\format{A data frame with 17 rows and 8 variables:
+\format{A data frame with 168 rows and 6 variables:
 \describe{
   \item{Paper}{Paper from which data are drawn}
   \item{Figure}{Figure number in paper}
