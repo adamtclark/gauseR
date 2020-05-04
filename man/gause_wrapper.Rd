@@ -5,7 +5,8 @@
 \title{Automated wrapper for Gause fitting functions}
 \usage{
 gause_wrapper(time, species, N_starting = NULL, r_starting = NULL,
-  A_starting = NULL, doplot = TRUE, keeptimes = FALSE, ...)
+  A_starting = NULL, doplot = TRUE, keeptimes = FALSE,
+  parm_signs = NULL, doopt = TRUE, ...)
 }
 \arguments{
 \item{time}{Vector of time steps corresponding to observations in species data.frame.}
@@ -24,6 +25,10 @@ Note - column names cannot include white spaces or non-standard special characte
 \item{doplot}{Logical. Should the resulting model be plotted? Defaults to TRUE.}
 
 \item{keeptimes}{Should predictions be given for the points in the "time" vector, or for a list of 100 evenly spaced time points? Defaults to FALSE.}
+
+\item{parm_signs}{Optional variable specifying signs for parameters. Defaults to NULL (automatically selected).}
+
+\item{doopt}{Should optimizer be used (if TRUE), or should the initial linearized estimates by applied (if FALSE)? Defaults to TRUE.}
 
 \item{...}{Optional additional arguments to be passed to ode and optim functions.}
 }

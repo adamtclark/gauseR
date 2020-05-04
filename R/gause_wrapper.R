@@ -16,6 +16,8 @@
 #' #forces that parameter to zero in the fitting. Values of NA are ignored. Defaults to NULL (no starting values).
 #' @param doplot Logical. Should the resulting model be plotted? Defaults to TRUE.
 #' @param keeptimes Should predictions be given for the points in the "time" vector, or for a list of 100 evenly spaced time points? Defaults to FALSE.
+#' @param parm_signs Optional variable specifying signs for parameters. Defaults to NULL (automatically selected).
+#' @param doopt Should optimizer be used (if TRUE), or should the initial linearized estimates by applied (if FALSE)? Defaults to TRUE.
 #' @param ... Optional additional arguments to be passed to ode and optim functions.
 #' @keywords Lokta-Volterra, Gause, interaction, optimization
 #' @return A list with simulated time series (out), paramter estimates (parameter_intervals),
@@ -37,7 +39,7 @@
 #' #run wrapper
 #' gause_out<-gause_wrapper(time=time, species=species)
 
-gause_wrapper<-function(time, species, N_starting=NULL, r_starting=NULL, A_starting=NULL, doplot=TRUE, keeptimes=FALSE, ...) {
+gause_wrapper<-function(time, species, N_starting=NULL, r_starting=NULL, A_starting=NULL, doplot=TRUE, keeptimes=FALSE, parm_signs=NULL, doopt=TRUE, ...) {
   #number of species
   if(is.null(dim(species))) {
     if(is.null(names(species))) {
@@ -108,16 +110,25 @@ gause_wrapper<-function(time, species, N_starting=NULL, r_starting=NULL, A_start
     initialN<-N_starting
   }
   
-  opt_data<-data.frame(time=time, species)
-  parm_signs<-sign(parms)
-  pars<-c(log(initialN), log(abs(parms[parms!=0])))
-  optout<-stats::optim(par = pars, fn = lv_optim, hessian = TRUE,
-                opt_data=opt_data, parm_signs=parm_signs, ...)
+  if(doopt) {
+    opt_data<-data.frame(time=time, species)
+    if(is.null(parm_signs)) {
+      parm_signs<-sign(parms)
+    }
+    pars<-c(log(initialN), log(abs(parms[parms!=0])))
+    optout<-stats::optim(par = pars, fn = lv_optim, hessian = TRUE,
+                  opt_data=opt_data, parm_signs=parm_signs, ...)
+    
+    #extract fitted parameters
+    parms<-numeric(length(parm_signs))
+    parms[parm_signs!=0] <- exp(optout$par[-c(1:length(initialN))])*parm_signs[parm_signs!=0]
+    initialN <- exp(optout$par[1:Nsp])
+  } else {
+    optout<-NA
+    parms<-c(r_start, A_start)
+    initialN<-unlist(species[1,])
+  }
   
-  #extract fitted parameters
-  parms<-numeric(length(parm_signs))
-  parms[parm_signs!=0] <- exp(optout$par[-c(1:length(initialN))])*parm_signs[parm_signs!=0]
-  initialN <- exp(optout$par[1:Nsp])
   if(keeptimes) {
     timessim<-time
   } else {
@@ -137,23 +148,27 @@ gause_wrapper<-function(time, species, N_starting=NULL, r_starting=NULL, A_start
            lwd=2, lty=1:Nsp, pch=1:Nsp, bty="n")
   }
   
-  #get rough parameter CI's
-  fisher_info<-unname(solve(-optout$hessian))
-  optout$par_sd<-sqrt(abs(diag(fisher_info)))
-  parm_signs_sp<-c(rep(1, ncol(opt_data)-1), parm_signs)
-  parameter_intervals<-data.frame(lower_sd=numeric(length(parm_signs_sp)),
-                                  mu=numeric(length(parm_signs_sp)),
-                                  upper_sd=numeric(length(parm_signs_sp)))
-  parameter_intervals[parm_signs_sp!=0,]<-data.frame(lower_sd=exp(optout$par-optout$par_sd)*parm_signs_sp[parm_signs_sp!=0],
-                                                     mu=exp(optout$par)*parm_signs_sp[parm_signs_sp!=0],
-                                                     upper_sd=exp(optout$par+optout$par_sd)*parm_signs_sp[parm_signs_sp!=0])
-  
-  #get right signs for intervals
-  tmp1<-parameter_intervals$lower_sd
-  tmp2<-parameter_intervals$upper_sd
-  ps<-which(parameter_intervals$lower_sd>parameter_intervals$upper_sd)
-  parameter_intervals$lower_sd[ps]<-tmp2[ps]
-  parameter_intervals$upper_sd[ps]<-tmp1[ps]
+  if(doopt) {
+    #get rough parameter CI's
+    fisher_info<-unname(solve(-optout$hessian))
+    optout$par_sd<-sqrt(abs(diag(fisher_info)))
+    parm_signs_sp<-c(rep(1, ncol(opt_data)-1), parm_signs)
+    parameter_intervals<-data.frame(lower_sd=numeric(length(parm_signs_sp)),
+                                    mu=numeric(length(parm_signs_sp)),
+                                    upper_sd=numeric(length(parm_signs_sp)))
+    parameter_intervals[parm_signs_sp!=0,]<-data.frame(lower_sd=exp(optout$par-optout$par_sd)*parm_signs_sp[parm_signs_sp!=0],
+                                                       mu=exp(optout$par)*parm_signs_sp[parm_signs_sp!=0],
+                                                       upper_sd=exp(optout$par+optout$par_sd)*parm_signs_sp[parm_signs_sp!=0])
+    
+    #get right signs for intervals
+    tmp1<-parameter_intervals$lower_sd
+    tmp2<-parameter_intervals$upper_sd
+    ps<-which(parameter_intervals$lower_sd>parameter_intervals$upper_sd)
+    parameter_intervals$lower_sd[ps]<-tmp2[ps]
+    parameter_intervals$upper_sd[ps]<-tmp1[ps]
+  } else {
+    parameter_intervals<-matrix(ncol=1, data=c(initialN, parms))
+  }
   
   
   row.names(parameter_intervals)<-c(paste(colnames(species), "0", sep=""),
