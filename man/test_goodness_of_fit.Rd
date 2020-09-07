@@ -4,8 +4,7 @@
 \alias{test_goodness_of_fit}
 \title{Test goodness of fit}
 \usage{
-test_goodness_of_fit(observed, predicted, bycolumn = FALSE,
-  droptimecol = TRUE)
+test_goodness_of_fit(observed, predicted, bycolumn = FALSE, droptimecol = TRUE)
 }
 \arguments{
 \item{observed}{A vector or matrix of observed values.}

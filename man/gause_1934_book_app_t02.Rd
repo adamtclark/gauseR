@@ -4,7 +4,8 @@
 \name{gause_1934_book_app_t02}
 \alias{gause_1934_book_app_t02}
 \title{Alcohol production of Saccharomyces cerevisiae and Schizosaccharomyces kephir}
-\format{A data frame with 28 rows and 7 variables:
+\format{
+A data frame with 28 rows and 7 variables:
 \describe{
   \item{Paper}{Paper from which data are drawn}
   \item{Table}{Table number in paper}
@@ -13,7 +14,8 @@
   \item{Alcohol}{Alcohol production in percent}
   \item{Alcohol.Yeast_Volume}{Alcohol production per unit of yeast volume}
   \item{Treatment}{Treatments: Anaerobic and Aerobic}
-}}
+}
+}
 \source{
 Gause (1934) The Struggle for Existence. Dover Publications; Reprint edition.
 }

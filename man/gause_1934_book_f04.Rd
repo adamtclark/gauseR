@@ -4,14 +4,16 @@
 \name{gause_1934_book_f04}
 \alias{gause_1934_book_f04}
 \title{Growth of Paramecium caudatum}
-\format{A data frame with 8 rows and 5 variables:
+\format{
+A data frame with 8 rows and 5 variables:
 \describe{
   \item{Paper}{Paper from which data are drawn}
   \item{Figure}{Figure number in paper}
   \item{Species}{Name of Species: Paramecium caudatum}
   \item{Time}{Day of experiment}
   \item{Individuals}{Number of Individuals}
-}}
+}
+}
 \source{
 Gause (1934) The Struggle for Existence. Dover Publications; Reprint edition.
 }

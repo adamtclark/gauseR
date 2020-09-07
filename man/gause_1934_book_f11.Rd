@@ -4,7 +4,8 @@
 \name{gause_1934_book_f11}
 \alias{gause_1934_book_f11}
 \title{Gause Yeast Data}
-\format{A data frame with 11 rows and 7 variables:
+\format{
+A data frame with 11 rows and 7 variables:
 \describe{
   \item{Paper}{Paper from which data are drawn}
   \item{Figure}{Figure number in paper}
@@ -13,7 +14,8 @@
   \item{Alcohol_Percent}{Alcohol concentration, in percent}
   \item{Yeast_Volume}{Yeast volume, listed in papers as 'amount'}
   \item{Treatment}{Experiment replicate, under two 'somewhat different' growth medium concentrations}
-}}
+}
+}
 \source{
 Huffaker (1958) Experimental Studies on Predation: Dispersion Factors and Predator-Prey Oscillations. Hilgardia 27: 343–83.
 }

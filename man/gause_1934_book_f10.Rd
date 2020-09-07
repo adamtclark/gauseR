@@ -4,15 +4,17 @@
 \name{gause_1934_book_f10}
 \alias{gause_1934_book_f10}
 \title{Growth of Saccharomyces cerevisiae with medium change}
-\format{A data frame with 29 rows and 6 variables:
+\format{
+A data frame with 29 rows and 6 variables:
 \describe{
   \item{Paper}{Paper from which data are drawn}
   \item{Figure}{Figure number in paper}
   \item{Species}{Name of Species: Saccharomyces cerevisiae}
   \item{Time}{Hour of experiment}
-  \item{Individuals}{Number of cells per 1/250 mm?}
+  \item{Individuals}{Number of cells per 1/250 mm3}
   \item{Treatment}{Treatments: medium change every 3, 12, 24 hours and control}
-}}
+}
+}
 \source{
 Gause (1934) The Struggle for Existence. Dover Publications; Reprint edition.
 }
@@ -22,6 +24,6 @@ gause_1934_book_f10
 \description{
 A dataset containing the abundance of  Saccharomyces cerevisiae  cultivated 
 in monoculture with a medium change in different time periods under anaerobic conditions.
-The Number of Individuals is measured in Number of cells per 1/250 mm?.
+The Number of Individuals is measured in Number of cells per 1/250 mm3.
 }
 \keyword{datasets}

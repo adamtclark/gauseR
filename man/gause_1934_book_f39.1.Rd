@@ -4,14 +4,16 @@
 \name{gause_1934_book_f39.1}
 \alias{gause_1934_book_f39.1}
 \title{The interaction between Paramecium bursaria and Schizosaccharomyces pombe}
-\format{A data frame with 36 rows and 5 variables:
+\format{
+A data frame with 36 rows and 5 variables:
 \describe{
   \item{Paper}{Paper from which data are drawn}
   \item{Figure}{Figure number in paper}
   \item{Time}{Day of experiment}
   \item{Species}{Name of Species: Paramecium bursaria and Schizosaccharomyces pombe}
   \item{Individuals}{Number of Individuals}
-}}
+}
+}
 \source{
 Gause (1934) The Struggle for Existence. Dover Publications; Reprint edition.
 }

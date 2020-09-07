@@ -4,7 +4,8 @@
 \name{gause_1934_science_f02_03}
 \alias{gause_1934_science_f02_03}
 \title{Paramecium competition experiment}
-\format{A data frame with 63 rows and 4 variables:
+\format{
+A data frame with 63 rows and 4 variables:
 \describe{
   \item{Paper}{Paper from which data are drawn}
   \item{Figure}{Figure number in paper}
@@ -14,7 +15,8 @@
   \item{Species2}{Name of Species 2}
   \item{Volume_Species2}{Volume of Paramecium aurelia}
   \item{Treatment}{Treatments: Pa and Pc moncultures, or mixture}
-}}
+}
+}
 \source{
 Gause (1934) Experimental Analysis of Vito Volterra's Mathematical Theory of the Struggle for Existence. Science 79:16-17.
 }

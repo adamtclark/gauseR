@@ -4,7 +4,8 @@
 \name{gause_1934_book_f24}
 \alias{gause_1934_book_f24}
 \title{Growth of Paramecium caudatum and Paramecium aurelia in Mixture on Half Loop Medium}
-\format{A data frame with 56 rows and 6 variables:
+\format{
+A data frame with 56 rows and 6 variables:
 \describe{
   \item{Paper}{Paper from which data are drawn}
   \item{Figure}{Figure number in paper}
@@ -12,7 +13,8 @@
   \item{Time}{Day of experiment}
   \item{Volume}{"Volume" of Species}
   \item{Treatment}{Treatments: Monoculture and Mixture}
-}}
+}
+}
 \source{
 Gause (1934) The Struggle for Existence. Dover Publications; Reprint edition.
 }

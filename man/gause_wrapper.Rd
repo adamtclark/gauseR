@@ -4,9 +4,18 @@
 \alias{gause_wrapper}
 \title{Automated wrapper for Gause fitting functions}
 \usage{
-gause_wrapper(time, species, N_starting = NULL, r_starting = NULL,
-  A_starting = NULL, doplot = TRUE, keeptimes = FALSE,
-  parm_signs = NULL, doopt = TRUE, ...)
+gause_wrapper(
+  time,
+  species,
+  N_starting = NULL,
+  r_starting = NULL,
+  A_starting = NULL,
+  doplot = TRUE,
+  keeptimes = FALSE,
+  parm_signs = NULL,
+  doopt = TRUE,
+  ...
+)
 }
 \arguments{
 \item{time}{Vector of time steps corresponding to observations in species data.frame.}
@@ -59,7 +68,7 @@ colnames(species)<-c("P_caudatum", "P_aurelia")
 #run wrapper
 gause_out<-gause_wrapper(time=time, species=species)
 }
-\keyword{Gause,}
-\keyword{Lokta-Volterra,}
-\keyword{interaction,}
-\keyword{optimization}
+\concept{Gause}
+\concept{Lokta-Volterra}
+\concept{interaction}
+\concept{optimization}

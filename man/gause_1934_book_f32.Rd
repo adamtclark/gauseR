@@ -4,7 +4,8 @@
 \name{gause_1934_book_f32}
 \alias{gause_1934_book_f32}
 \title{Didinium/Paramecium predator/prey experiment}
-\format{A data frame with 17 rows and 8 variables:
+\format{
+A data frame with 17 rows and 8 variables:
 \describe{
   \item{Paper}{Paper from which data are drawn}
   \item{Figure}{Figure number in paper}
@@ -14,7 +15,8 @@
   \item{Predator}{Name of Predator Species}
   \item{Individuals_Predator}{Number of Predator Individuals}
   \item{Immigration}{Is immigration occurring in this time-step? (yes or no)}
-}}
+}
+}
 \source{
 Gause (1934) The Struggle for Existence. Dover Publications; Reprint edition.
 }

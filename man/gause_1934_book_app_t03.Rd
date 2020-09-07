@@ -4,7 +4,8 @@
 \name{gause_1934_book_app_t03}
 \alias{gause_1934_book_app_t03}
 \title{Raw data of Paramecium caudatum and Paramecium aurelia grown in Monoculture and Mixture}
-\format{A data frame with 104 rows and 6 variables:
+\format{
+A data frame with 104 rows and 6 variables:
 \describe{
   \item{Paper}{Paper from which data are drawn}
   \item{Table}{Table number in paper}
@@ -12,7 +13,8 @@
   \item{Time}{Day of experiment}
   \item{Individuals}{Number of Individuals}
   \item{Treatment}{Treatments: Monoculture and Mixture}
-}}
+}
+}
 \source{
 Gause (1934) The Struggle for Existence. Dover Publications; Reprint edition.
 }

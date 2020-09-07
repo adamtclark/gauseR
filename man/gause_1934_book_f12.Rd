@@ -4,14 +4,16 @@
 \name{gause_1934_book_f12}
 \alias{gause_1934_book_f12}
 \title{Growth of Saccharomyces cerevisiae with additional alcohol}
-\format{A data frame with 6 rows and 5 variables:
+\format{
+A data frame with 6 rows and 5 variables:
 \describe{
   \item{Paper}{Paper from which data are drawn}
   \item{Figure}{Figure number in paper}
   \item{Species}{Name of Species: Saccharomyces cerevisiae}
   \item{Alcohol}{Additional alcohol in percent}
   \item{Population}{Percentage of saturated population reached}
-}}
+}
+}
 \source{
 Gause (1934) The Struggle for Existence. Dover Publications; Reprint edition.
 }

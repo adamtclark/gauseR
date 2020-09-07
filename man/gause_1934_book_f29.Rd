@@ -4,7 +4,8 @@
 \name{gause_1934_book_f29}
 \alias{gause_1934_book_f29}
 \title{Paramecium/Didinium predator-prey experiment}
-\format{A data frame with 62 rows and 7 variables:
+\format{
+A data frame with 62 rows and 7 variables:
 \describe{
   \item{Paper}{Paper from which data are drawn}
   \item{Figure}{Figure number in paper}
@@ -13,7 +14,8 @@
   \item{Volume}{Volume of Didinium}
   \item{Individuals}{Number of Individuals}
   \item{Treatment}{Treatments: D. nasutum introduced after 0, 24, 36 and 48 hrs}
-}}
+}
+}
 \source{
 Gause (1934) The Struggle for Existence. Dover Publications; Reprint edition.
 }

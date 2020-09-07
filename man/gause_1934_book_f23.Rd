@@ -4,7 +4,8 @@
 \name{gause_1934_book_f23}
 \alias{gause_1934_book_f23}
 \title{Growth of Paramecium caudatum and Paramecium aurelia with wild bacteria}
-\format{A data frame with 61 rows and 6 variables:
+\format{
+A data frame with 61 rows and 6 variables:
 \describe{
   \item{Paper}{Paper from which data are drawn}
   \item{Figure}{Figure number in paper}
@@ -12,7 +13,8 @@
   \item{Time}{Day of experiment}
   \item{Volume}{"Volume" of Species}
   \item{Treatment}{Treatments: One Loop and Half Loop}
-}}
+}
+}
 \source{
 Gause (1934) The Struggle for Existence. Dover Publications; Reprint edition.
 }

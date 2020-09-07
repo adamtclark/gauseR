@@ -4,7 +4,8 @@
 \name{gause_1936_AnE_t02}
 \alias{gause_1936_AnE_t02}
 \title{Interaction  between  predators  (Cheyletus eruditus) and  prey  (Aleuroglyphus agilis)-Raw data}
-\format{A data frame with 191 rows and 12 variables:
+\format{
+A data frame with 191 rows and 12 variables:
 \describe{
   \item{Paper}{Paper from which data are drawn}
   \item{Table}{Table number in paper}
@@ -18,7 +19,8 @@
   \item{Octapod}{Number of octapod larvae stage Individuals per 0.2 g}
   \item{Initial_Fraction}{Initial Number of prey/predator}
   \item{Treatment}{Treatments: Wheat and Semoletta}
-}}
+}
+}
 \source{
 Gause (1936) Further Studies of Interaction between Predators and Prey. Journal of Animal Ecology, vol. 5, pp. 1-18.
 }

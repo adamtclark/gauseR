@@ -4,7 +4,8 @@
 \name{gause_1936_AnE_t03}
 \alias{gause_1936_AnE_t03}
 \title{Interaction  between  predators  (Paramecium bursaria) and  prey  (Saccharomyces exiguus)}
-\format{A data frame with 266 rows and 6 variables:
+\format{
+A data frame with 266 rows and 6 variables:
 \describe{
   \item{Paper}{Paper from which data are drawn}
   \item{Table}{Table number in paper}
@@ -12,7 +13,8 @@
   \item{Time}{Day of experiment}
   \item{Species}{Name of Species: Cheyletus eruditus and Aleuiroglyphus agilis}
   \item{Individuals}{Number of all Individuals of Species per 0.2 g}
-}}
+}
+}
 \source{
 Gause (1936) Further Studies of Interaction between Predators and Prey. Journal of Animal Ecology, vol. 5, pp. 1-18.
 }

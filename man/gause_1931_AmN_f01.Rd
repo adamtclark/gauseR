@@ -4,7 +4,8 @@
 \name{gause_1931_AmN_f01}
 \alias{gause_1931_AmN_f01}
 \title{Growth of population of the flour beetle Tribolium confusum in 16 and 64 grams of flour}
-\format{A data frame with 18 rows and 6 variables:
+\format{
+A data frame with 18 rows and 6 variables:
 \describe{
   \item{Paper}{Paper from which data are drawn}
   \item{Figure}{Figure number in paper}
@@ -12,7 +13,8 @@
   \item{Time}{Day of experiment}
   \item{Individuals}{Number of Individuals}
   \item{Treatment}{Treatments:16 and 64g flour per starting beetle pair}
-}}
+}
+}
 \source{
 Gause (1931) The influence of ecological factors on the size of population. The American Naturalist 65:696, 70-76
 }
@@ -21,7 +23,7 @@ gause_1931_AmN_f01
 }
 \description{
 A dataset containing the abundance of Tribolium confusum, grown in monoculture with 
-different quantities of food (flour. Gause?s goal was to determine the influence of ecological
+different quantities of food (flour). Gause's goal was to determine the influence of ecological
 factors on population growth.
 }
 \keyword{datasets}

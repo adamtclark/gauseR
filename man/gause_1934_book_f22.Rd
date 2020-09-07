@@ -4,7 +4,8 @@
 \name{gause_1934_book_f22}
 \alias{gause_1934_book_f22}
 \title{Paramecium competition experiment}
-\format{A data frame with 72 rows and 4 variables:
+\format{
+A data frame with 72 rows and 4 variables:
 \describe{
   \item{Paper}{Paper from which data are drawn}
   \item{Figure}{Figure number in paper}
@@ -14,7 +15,8 @@
   \item{Species2}{Name of Species 2}
   \item{Volume_Species2}{Volume of Paramecium aurelia}
   \item{Treatment}{Treatments: Pa and Pc moncultures, or mixture}
-}}
+}
+}
 \source{
 Gause (1934) The Struggle for Existence. Dover Publications; Reprint edition.
 }

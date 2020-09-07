@@ -4,7 +4,8 @@
 \name{gause_1934_book_f16}
 \alias{gause_1934_book_f16}
 \title{Growth of Schizosaccaromyces kephir and Saccharomyces cerevisiae in mixed population -aerobic}
-\format{A data frame with 27 rows and 6 variables:
+\format{
+A data frame with 27 rows and 6 variables:
 \describe{
   \item{Paper}{Paper from which data are drawn}
   \item{Figure}{Figure number in paper}
@@ -12,7 +13,8 @@
   \item{Time}{Hour of experiment}
   \item{Volume}{"Amount of Yeast" of Species}
   \item{Treatment}{Treatments: Monoculture and Mixture}
-}}
+}
+}
 \source{
 Gause (1934) The Struggle for Existence. Dover Publications; Reprint edition.
 }

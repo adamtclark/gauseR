@@ -4,7 +4,8 @@
 \name{gause_1934_book_f31}
 \alias{gause_1934_book_f31}
 \title{The interaction between Didinium nasutum and Paramecium caudatum on oat medium}
-\format{A data frame with 12 rows and 6 variables:
+\format{
+A data frame with 12 rows and 6 variables:
 \describe{
   \item{Paper}{Paper from which data are drawn}
   \item{Figure}{Figure number in paper}
@@ -12,7 +13,8 @@
   \item{Species}{Name of Species: Didinium nasutum and Paramecium caudatum}
   \item{Individuals}{Number of Individuals}
   \item{Treatment}{Treatment: Oat medium}
-}}
+}
+}
 \source{
 Gause (1934) The Struggle for Existence. Dover Publications; Reprint edition.
 }

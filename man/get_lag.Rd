@@ -32,7 +32,7 @@ lagged_data <- get_lag(x=gause_1934_science_f02_03$Volume_Species1,
                time = gause_1934_science_f02_03$Day,
                treatment = gause_1934_science_f02_03$Treatment)
 }
-\keyword{Gause,}
-\keyword{competition,}
-\keyword{lag}
-\keyword{time}
+\concept{Gause}
+\concept{competition}
+\concept{lag}
+\concept{time}

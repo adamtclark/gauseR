@@ -4,14 +4,16 @@
 \name{gause_1934_book_f09}
 \alias{gause_1934_book_f09}
 \title{Growth of Saccharomyces cerevisiae}
-\format{A data frame with 9 rows and 5 variables:
+\format{
+A data frame with 9 rows and 5 variables:
 \describe{
   \item{Paper}{Paper from which data are drawn}
   \item{Figure}{Figure number in paper}
   \item{Species}{Name of Species: Saccharomyces cerevisiae}
   \item{Time}{Hour of experiment}
   \item{Volume}{"Amount of Yeast" of Species}
-}}
+}
+}
 \source{
 Gause (1934) The Struggle for Existence. Dover Publications; Reprint edition.
 }

@@ -4,7 +4,8 @@
 \name{huffaker_1963}
 \alias{huffaker_1963}
 \title{Huffaker Mite Data}
-\format{A data frame with 168 rows and 6 variables:
+\format{
+A data frame with 168 rows and 6 variables:
 \describe{
   \item{Paper}{Paper from which data are drawn}
   \item{Figure}{Figure number in paper}
@@ -12,7 +13,8 @@
   \item{Weeks}{Experiment week}
   \item{Individuals}{Number of individuals}
   \item{Treatment}{60 vs. 24-week experiments}
-}}
+}
+}
 \source{
 Huffaker (1958) Experimental Studies on Predation: Dispersion Factors and Predator-Prey Oscillations. Hilgardia 27: 343–83.
 }

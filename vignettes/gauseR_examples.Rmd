@@ -42,14 +42,14 @@ lagged_data<-get_lag(x=logistic_data$Volume_Species2, time = logistic_data$Day)
 lagged_data$dNNdt <- percap_growth(x = lagged_data$x, laggedx = lagged_data$laggedx, dt = lagged_data$dt)
 
 # plot relationship
-plot(dNNdt~x, lagged_data,
-     xlab="Abundance (N)",
+plot(dNNdt~laggedx, lagged_data,
+     xlab="Lagged Abundance (N)",
      ylab="Per-capita Growth Rate (dN/Ndt)",
      xlim=c(0, 250), ylim=c(0, 1))
 abline(h=0, v=0, lty=3)
 
 # fit model to relationship
-mod<-lm(dNNdt~x, lagged_data)
+mod<-lm(dNNdt~laggedx, lagged_data)
 abline(mod, lwd=2, col=2)
 
 # label parameters
@@ -59,13 +59,13 @@ text(25, 0.6, "y-intercept: r", pos=1)
 arrows(200, 0.4, 232, 0.01, length = 0.1, lwd=1.5)
 text(200, 0.4, "x-intercept: K", pos=3)
 
-arrows(80, predict(mod, newdata=data.frame(x=80)),
-         130, predict(mod, newdata=data.frame(x=80)),
+arrows(80, predict(mod, newdata=data.frame(laggedx=80)),
+         130, predict(mod, newdata=data.frame(laggedx=80)),
          length = 0.1, lwd=1.5)
-arrows(130, predict(mod, newdata=data.frame(x=80)),
-       130, predict(mod, newdata=data.frame(x=130)),
+arrows(130, predict(mod, newdata=data.frame(laggedx=80)),
+       130, predict(mod, newdata=data.frame(laggedx=130)),
        length = 0.1, lwd=1.5)
-text(130, predict(mod, newdata=data.frame(x=80)), "slope: aii", pos=3)
+text(130, predict(mod, newdata=data.frame(laggedx=80)), "slope: aii", pos=3)
 ```
 
 Recall that per-capita growth rate (i.e. growth rate divided by population size) for the logistic growth model follows the form:

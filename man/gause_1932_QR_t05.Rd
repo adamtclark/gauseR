@@ -4,7 +4,8 @@
 \name{gause_1932_QR_t05}
 \alias{gause_1932_QR_t05}
 \title{The influence of temperature on the growth of the yeast Saccharomyces cerevisiae}
-\format{A data frame with 102 rows and 7 variables:
+\format{
+A data frame with 102 rows and 7 variables:
 \describe{
   \item{Paper}{Paper from which data are drawn}
   \item{Table}{Table number in paper}
@@ -12,8 +13,9 @@
   \item{Species}{Name of Species: Saccharomyces cerevisiae}
   \item{Time}{Hour of experiment}
   \item{Volume}{"Amount of Yeast" of Species}
-  \item{Treatment}{Treatments: Temperatures (5.7 to 41 ?C)}
-}}
+  \item{Treatment}{Treatments: Temperatures (5.7 to 41 degrees C)}
+}
+}
 \source{
 Gause (1932) Ecology of Populations. The Quarterly Review of Biology 7, vol. 1, pp. 27-46
 }
@@ -21,7 +23,7 @@ Gause (1932) Ecology of Populations. The Quarterly Review of Biology 7, vol. 1, 
 gause_1932_QR_t05
 }
 \description{
-A dataset containing the abundance of Saccharomyces cerevisiae, grown in different temperatures (5.7 to 41 ?C).
+A dataset containing the abundance of Saccharomyces cerevisiae, grown in different temperatures (5.7 to 41 degrees C).
 The Volume is measured in "Amount of yeast", which refers to a standardized index, based on the alcohol production per Unit of Yeast.
 }
 \keyword{datasets}

@@ -416,7 +416,7 @@
 #' 
 #' A dataset containing the abundance of  Saccharomyces cerevisiae  cultivated 
 #' in monoculture with a medium change in different time periods under anaerobic conditions.
-#' The Number of Individuals is measured in Number of cells per 1/250 mm?.
+#' The Number of Individuals is measured in Number of cells per 1/250 mm3.
 #'
 #' @format A data frame with 29 rows and 6 variables:
 #' \describe{
@@ -424,7 +424,7 @@
 #'   \item{Figure}{Figure number in paper}
 #'   \item{Species}{Name of Species: Saccharomyces cerevisiae}
 #'   \item{Time}{Hour of experiment}
-#'   \item{Individuals}{Number of cells per 1/250 mm?}
+#'   \item{Individuals}{Number of cells per 1/250 mm3}
 #'   \item{Treatment}{Treatments: medium change every 3, 12, 24 hours and control}
 #' }
 #' @source Gause (1934) The Struggle for Existence. Dover Publications; Reprint edition.
@@ -526,7 +526,7 @@
 #' Growth of population of the flour beetle Tribolium confusum in 16 and 64 grams of flour
 #' 
 #' A dataset containing the abundance of Tribolium confusum, grown in monoculture with 
-#' different quantities of food (flour. Gause?s goal was to determine the influence of ecological
+#' different quantities of food (flour). Gause's goal was to determine the influence of ecological
 #' factors on population growth.
 #' 
 #'
@@ -546,7 +546,7 @@
 #' 
 #' A dataset containing the population size of Tribolium confusum at the upper asymptote,
 #' as a characteristic for the population beeing in equilibrium, under different quantities of food (flour).
-#' Gause?s goal was to determine the influence of ecological factors on population growth.
+#' Gause's goal was to determine the influence of ecological factors on population growth.
 #' 
 #'
 #' @format A data frame with 4 rows and 5 variables:
@@ -564,7 +564,7 @@
 #' 
 #' A dataset containing the population size of Moina macrocopa at the upper asymptote,
 #' as a characteristic for the population beeing in equilibrium, under different temperatures.
-#' Gause?s goal was to determine the influence of ecological factors on population growth.
+#' Gause's goal was to determine the influence of ecological factors on population growth.
 #' 
 #'
 #' @format A data frame with 3 rows and 5 variables:
@@ -573,7 +573,7 @@
 #'   \item{Figure}{Figure number in paper}
 #'   \item{Species}{Name of Species: Tribolium confusum}
 #'   \item{Individuals}{Number of Individuals at population equlibrium}
-#'   \item{Treatment}{Treatments:20, 25 and 35? Celcius}
+#'   \item{Treatment}{Treatments:20, 25 and 35 degrees Celcius}
 #' }
 #' @source Gause (1931) The influence of ecological factors on the size of population. The American Naturalist 65:696, 70-76 
 "gause_1931_AmN_f03"
@@ -583,7 +583,7 @@
 #' 
 #' A dataset containing the abundance of Cheyletus eruditus and Aleuiroglyphus agilis,
 #' as apredator-prey system under different food conditions for the prey (wheat and millet).
-#' Gause?s goal was to determine the influence of ecological factors on predator-prey dynamics.
+#' Gause's goal was to determine the influence of ecological factors on predator-prey dynamics.
 #' The number of individuals is reported as Individuals per 0.2 g prey food.
 #' 
 #'
@@ -707,7 +707,7 @@
 
 #' The influence of temperature on the growth of the yeast Saccharomyces cerevisiae
 #'
-#' A dataset containing the abundance of Saccharomyces cerevisiae, grown in different temperatures (5.7 to 41 ?C).
+#' A dataset containing the abundance of Saccharomyces cerevisiae, grown in different temperatures (5.7 to 41 degrees C).
 #' The Volume is measured in "Amount of yeast", which refers to a standardized index, based on the alcohol production per Unit of Yeast.
 #' 
 #'
@@ -719,7 +719,7 @@
 #'   \item{Species}{Name of Species: Saccharomyces cerevisiae}
 #'   \item{Time}{Hour of experiment}
 #'   \item{Volume}{"Amount of Yeast" of Species}
-#'   \item{Treatment}{Treatments: Temperatures (5.7 to 41 ?C)}
+#'   \item{Treatment}{Treatments: Temperatures (5.7 to 41 degrees C)}
 #' }
 #' @source Gause (1932) Ecology of Populations. The Quarterly Review of Biology 7, vol. 1, pp. 27-46 
 "gause_1932_QR_t05"

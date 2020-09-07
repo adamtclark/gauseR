@@ -56,7 +56,7 @@ Ntest<-get_logistic(time = timesq, N0=coef(nls_mod)["N0"], r=coef(nls_mod)["r"],
 
 lines(timesq, Ntest, col="red")
 }
-\keyword{Gause,}
-\keyword{competition,}
-\keyword{growth}
-\keyword{logistic}
+\concept{Gause}
+\concept{competition}
+\concept{growth}
+\concept{logistic}

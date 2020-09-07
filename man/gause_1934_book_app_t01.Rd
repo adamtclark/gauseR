@@ -4,7 +4,8 @@
 \name{gause_1934_book_app_t01}
 \alias{gause_1934_book_app_t01}
 \title{Raw data on the abundances and volumes of Saccharomyces cerevisiae and Schizosaccharomyces kephir}
-\format{A data frame with 60 rows and 10 variables:
+\format{
+A data frame with 60 rows and 10 variables:
 \describe{
   \item{Paper}{Paper from which data are drawn}
   \item{Table}{Table number in paper}
@@ -17,7 +18,8 @@
   \item{Volume_Total}{Total volume of yeast}
   \item{Treatment}{Treatments: Monoculture and Mixture}
  
-}}
+}
+}
 \source{
 Gause (1934) The Struggle for Existence. Dover Publications; Reprint edition.
 }

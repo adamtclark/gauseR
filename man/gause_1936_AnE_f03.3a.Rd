@@ -4,7 +4,8 @@
 \name{gause_1936_AnE_f03.3a}
 \alias{gause_1936_AnE_f03.3a}
 \title{Interaction  between  predators  (Cheyletus eruditus) and  prey  (Aleuroglyphus agilis) with artifical immigration}
-\format{A data frame with 24 rows and 6 variables:
+\format{
+A data frame with 24 rows and 6 variables:
 \describe{
   \item{Paper}{Paper from which data are drawn}
   \item{Figure}{Figure number in paper}
@@ -12,7 +13,8 @@
   \item{Species}{Name of Species: Cheyletus eruditus and Aleuiroglyphus agilis}
   \item{Individuals}{Number of Individuals per 0.2 g}
   \item{Treatment}{Treatment: Immigration}
-}}
+}
+}
 \source{
 Gause (1936) Further Studies of Interaction between Predators and Prey. Journal of Animal Ecology, vol. 5, pp. 1-18.
 }

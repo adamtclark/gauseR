@@ -4,7 +4,8 @@
 \name{gause_1934_book_app_t05}
 \alias{gause_1934_book_app_t05}
 \title{Raw data of Stylonychia pustulata in monoculture and mixture with and Paramecium aurelia and P. caudatum}
-\format{A data frame with 575 rows and 8 variables:
+\format{
+A data frame with 575 rows and 8 variables:
 \describe{
   \item{Paper}{Paper from which data are drawn}
   \item{Table}{Table number in paper}
@@ -14,7 +15,8 @@
   \item{Species}{Name of Species: Stylonychia pustulata, Paramecium caudatum and Paramecium aurelia}
   \item{Individuals}{Number of Individuals}
   \item{Treatment}{Treatments: Monoculture and Mixture P.aurelia and Mixture P.caudatum}
-}}
+}
+}
 \source{
 Gause (1934) The Struggle for Existence. Dover Publications; Reprint edition.
 }

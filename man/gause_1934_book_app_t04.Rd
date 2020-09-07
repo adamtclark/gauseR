@@ -4,7 +4,8 @@
 \name{gause_1934_book_app_t04}
 \alias{gause_1934_book_app_t04}
 \title{Raw data of Paramecium caudatum and Paramecium aurelia grown on different media}
-\format{A data frame with 68 rows and 7 variables:
+\format{
+A data frame with 68 rows and 7 variables:
 \describe{
   \item{Paper}{Paper from which data are drawn}
   \item{Table}{Table number in paper}
@@ -13,7 +14,8 @@
   \item{Individuals}{Number of Individuals}
   \item{Individuals_Mixture}{Number of Individuals per Species in Mixture}
   \item{Treatment}{Treatments: One Loop and Half Loop}
-}}
+}
+}
 \source{
 Gause (1934) The Struggle for Existence. Dover Publications; Reprint edition.
 }
