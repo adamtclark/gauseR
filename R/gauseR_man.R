@@ -4,7 +4,7 @@
 #' Lotka-Volterra models to time series data. Includes methods for fitting single-species logistic
 #' growth, and multi-species interaction models, e.g. of competition, predator/prey relationships,
 #' or mutualism. See documentation for individual functions for examples. In general, see the
-#' lv_optim function for examples of how to fit parameter values in multi-species systems.
+#' lv_optim() function for examples of how to fit parameter values in multi-species systems.
 #'
 #' @section Authors:
 #' Adam Clark, Lina Muehlbauer, and Maximilienne Schulze.
