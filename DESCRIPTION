@@ -1,5 +1,5 @@
 Package: gauseR
-Title: Simple Methods for Fitting Lotka-Volterra Models Describing Gause's 'Struggle for Existence'
+Title: Lotka-Volterra Models for Gause's 'Struggle for Existence'
 Version: 1.0
 Authors@R: c(person("Adam", "Clark", role = c("aut", "cre"),
 					email = c("adam.tclark@gmail.com"),
