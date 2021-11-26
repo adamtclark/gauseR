@@ -68,7 +68,7 @@ colnames(species)<-c("P_caudatum", "P_aurelia")
 #run wrapper
 gause_out<-gause_wrapper(time=time, species=species)
 }
-\concept{Gause}
-\concept{Lokta-Volterra}
-\concept{interaction}
-\concept{optimization}
+\keyword{Gause,}
+\keyword{Lokta-Volterra,}
+\keyword{interaction,}
+\keyword{optimization}

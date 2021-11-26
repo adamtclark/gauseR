@@ -1,6 +1,6 @@
 Package: gauseR
 Title: Lotka-Volterra Models for Gause's 'Struggle for Existence'
-Version: 1.0
+Version: 1.1
 Authors@R: c(person("Adam", "Clark", role = c("aut", "cre"),
 					email = c("adam.tclark@gmail.com"),
                     comment = c(ORCID = "0000-0002-8843-3278")),
