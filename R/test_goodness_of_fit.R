@@ -52,12 +52,12 @@ test_goodness_of_fit<-function(observed, predicted, bycolumn = FALSE, droptimeco
   
   if(!bycolumn || is.null(dim(observed))) {
     result<-(1-mean((observed-predicted)^2, na.rm=T)/
-      mean((observed-mean(predicted, na.rm=T))^2, na.rm=T))
+      mean((observed-mean(observed, na.rm=T))^2, na.rm=T))
   } else {
     result<-numeric(ncol(observed))
     for(i in 1:ncol(observed)) {
       result[i]<-1-mean((observed[,i]-predicted[,i])^2, na.rm=T)/
-        mean((observed[,i]-mean(predicted[,i], na.rm=T))^2, na.rm=T)
+        mean((observed[,i]-mean(observed[,i], na.rm=T))^2, na.rm=T)
     }
   }
   return(result)
