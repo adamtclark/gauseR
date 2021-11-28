@@ -82,6 +82,6 @@ legend("topleft", c("Pc", "Pa"), col=c(1,2), lwd=2, lty=c(1,3))
 points(mixturedata$Day, mixturedata$Volume_Species1, col=1)
 points(mixturedata$Day, mixturedata$Volume_Species2, col=2)
 }
-\keyword{Gause,}
-\keyword{Lokta-Volterra,}
-\keyword{interaction}
+\concept{Gause}
+\concept{Lokta-Volterra}
+\concept{interaction}

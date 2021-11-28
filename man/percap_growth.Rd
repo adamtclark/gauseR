@@ -28,6 +28,6 @@ lagged_data <- get_lag(x=gause_1934_science_f02_03$Volume_Species1,
 dNNdt <- percap_growth(x=lagged_data$x, laggedx=lagged_data$laggedx,
                dt=lagged_data$dt)
 }
-\keyword{Gause,}
-\keyword{competition,}
-\keyword{growth}
+\concept{Gause}
+\concept{competition}
+\concept{growth}

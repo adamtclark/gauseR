@@ -56,6 +56,6 @@ mod<-nls(y~ode_prediction(pars_full, time, N),
            data=fittigdata)
 summary(mod)
 }
-\keyword{Gause,}
-\keyword{competition,}
-\keyword{optimization}
+\concept{Gause}
+\concept{competition}
+\concept{optimization}

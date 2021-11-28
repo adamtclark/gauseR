@@ -24,6 +24,6 @@ dlog(ni)/dt = (ri + aii * ni + sum_j(aij * nj))
 This form can be helpful for optimization routines where species abundances
 are close to zero.
 }
-\keyword{Gause,}
-\keyword{Lokta-Volterra,}
-\keyword{interaction}
+\concept{Gause}
+\concept{Lokta-Volterra}
+\concept{interaction}

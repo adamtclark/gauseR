@@ -17,7 +17,7 @@ A data frame with 11 rows and 7 variables:
 }
 }
 \source{
-Huffaker (1958) Experimental Studies on Predation: Dispersion Factors and Predator-Prey Oscillations. Hilgardia 27: 343–83.
+Huffaker (1958) Experimental Studies on Predation: Dispersion Factors and Predator-Prey Oscillations. Hilgardia 27: 343-83.
 }
 \usage{
 gause_1934_book_f11

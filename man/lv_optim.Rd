@@ -143,7 +143,7 @@ parameter_intervals<-data.frame(lower_sd=exp(optout$par-optout$par_sd)*parm_sign
 rownames(parameter_intervals)<-c("prey", "predator", "r1", "r2", "a11", "a12", "a21", "a22")
 parameter_intervals
 }
-\keyword{Gause,}
-\keyword{Lokta-Volterra,}
-\keyword{interaction,}
-\keyword{optimization}
+\concept{Gause}
+\concept{Lokta-Volterra}
+\concept{interaction}
+\concept{optimization}
