@@ -11,7 +11,10 @@
 #' @param standardize A logical, defaulting to TRUE - should error be calculated based on standardized values of
 #' outputs? Allows for more equal weighting of observed variabels.
 #' @param odefun The function to use to simulate the ODE - defaults to lv_interaction_log
-#' @keywords Lokta-Volterra, Gause, interaction, optimization
+#' @concept Lokta-Volterra
+#' @concept Gause
+#' @concept interaction
+#' @concept optimization
 #' @return squared error between model fits for given parameter values, and observations
 #' @export
 #' @examples 

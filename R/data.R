@@ -122,7 +122,7 @@
 #'   \item{Individuals}{Number of individuals}
 #'   \item{Treatment}{60 vs. 24-week experiments}
 #' }
-#' @source Huffaker (1958) Experimental Studies on Predation: Dispersion Factors and Predator-Prey Oscillations. Hilgardia 27: 343–83.
+#' @source Huffaker (1958) Experimental Studies on Predation: Dispersion Factors and Predator-Prey Oscillations. Hilgardia 27: 343-83.
 "huffaker_1963"
 
 #' Gause Yeast Data
@@ -140,7 +140,7 @@
 #'   \item{Yeast_Volume}{Yeast volume, listed in papers as 'amount'}
 #'   \item{Treatment}{Experiment replicate, under two 'somewhat different' growth medium concentrations}
 #' }
-#' @source Huffaker (1958) Experimental Studies on Predation: Dispersion Factors and Predator-Prey Oscillations. Hilgardia 27: 343–83.
+#' @source Huffaker (1958) Experimental Studies on Predation: Dispersion Factors and Predator-Prey Oscillations. Hilgardia 27: 343-83.
 "gause_1934_book_f11"
 
 #' Paramecium/Didinium predator-prey experiment

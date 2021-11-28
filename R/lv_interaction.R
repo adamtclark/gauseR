@@ -8,7 +8,9 @@
 #' @param n A vector of species abundances
 #' @param parms A vector of parameters - the first n elements should be the growth rates r1, r2, ... rn for all n species.
 #' The remaining terms should be the elements of the interaction matrix A, listed in the order a11, a12, ... a1n, a21, a22, ... a2n, ... an1, an2, ... ann.
-#' @keywords Lokta-Volterra, Gause, interaction
+#' @concept Lokta-Volterra
+#' @concept Gause
+#' @concept interaction
 #' @return vector of growth rates for each species
 #' @export
 #' @examples

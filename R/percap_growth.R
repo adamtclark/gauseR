@@ -5,7 +5,9 @@
 #' @param x Abundance
 #' @param laggedx Lagged abundance
 #' @param dt Time lag between observations
-#' @keywords competition, Gause, growth
+#' @concept competition
+#' @concept Gause
+#' @concept growth
 #' @return Per-capita growth rate
 #' @export
 #' @examples

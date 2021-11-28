@@ -7,7 +7,9 @@
 #' @param pars_full Initial Population Size
 #' @param time A vector of times. Must be repeated once per species.
 #' @param N Number of species. Can be either a number, or a vector the same length as time.
-#' @keywords competition, Gause, optimization
+#' @concept competition
+#' @concept Gause
+#' @concept optimization
 #' @return a stacked vector with predicted abundances for all species
 #' @export
 #' @examples

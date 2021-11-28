@@ -19,7 +19,10 @@
 #' @param parm_signs Optional variable specifying signs for parameters. Defaults to NULL (automatically selected).
 #' @param doopt Should optimizer be used (if TRUE), or should the initial linearized estimates by applied (if FALSE)? Defaults to TRUE.
 #' @param ... Optional additional arguments to be passed to ode and optim functions.
-#' @keywords Lokta-Volterra, Gause, interaction, optimization
+#' @concept Lokta-Volterra
+#' @concept Gause
+#' @concept interaction
+#' @concept optimization
 #' @return A list with simulated time series (out), paramter estimates (parameter_intervals),
 #' optimizer output (optout), and raw data used for fitting (rawdata).
 #' @export

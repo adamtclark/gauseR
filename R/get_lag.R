@@ -7,7 +7,9 @@
 #' @param mindt Minimum dt allowed between observations - defaults to 0
 #' @param maxdt Maximum dt allowed between observations - defaults to Inf
 #' @param treatment An optional vector of treatment conditions - time lags will only be computed separately within treatments - defaults to NULL (i.e. no treatments)
-#' @keywords competition, Gause, time lag
+#' @concept competition
+#' @concept Gause
+#' @concept time lag
 #' @return Returns a data.frame with 7 columns: x (unlagged time series data); laggedx (lagged time series data); xmid (average of time series and lagged time series values);
 #' dt (time lag between x and laggedx); time (time for observation x); laggedtime (time for observation laggedx); treatment (treatment for observation)
 #' @export

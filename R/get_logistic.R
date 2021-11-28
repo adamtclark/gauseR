@@ -5,7 +5,9 @@
 #' @param time The time steps corresponding to each observation
 #' @param r Growth rate
 #' @param K Carying Capacity 
-#' @keywords competition, Gause, logistic growth
+#' @concept competition
+#' @concept Gause
+#' @concept logistic growth
 #' @return population size N for each time steps as a vector
 #' @export
 #' @examples
