@@ -19,6 +19,8 @@
 #' @docType package
 #' @source Clarence Lehman, Shelby Loberg, and Adam T. Clark. (2019). Quantitative Ecology: A New Unified Approach. University of Minnesota Libraries Publishing. University of Minnesota Digital Conservancy, http://hdl.handle.net/11299/204551
 #' @source Lina K. Muehlbauer, Maximilienne Schulze, W. Stanley Harpole, and Adam T. Clark. "gauseR: Simple methods for fitting Lotka-Volterra models describing Gause's 'Struggle for Existence'." Ecology and Evolution.
+#' @keywords internal 
+#' "_PACKAGE"
 #' @name gauseR
 #' @examples
 #' #primary wrapper function

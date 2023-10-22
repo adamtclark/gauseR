@@ -47,3 +47,5 @@ dni/dt = ni * (ri + aii * ni + sum_j(aij * nj))
 ?ode_prediction       # generic function for simulating time series,
                       # to be used with other optimizers
 }
+\keyword{"_PACKAGE"}
+\keyword{internal}
