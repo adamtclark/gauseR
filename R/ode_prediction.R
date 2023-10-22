@@ -24,6 +24,7 @@
 #' species<-data.frame(mixturedat$Volume_Species1, mixturedat$Volume_Species2)
 #' colnames(species)<-c("P_caudatum", "P_aurelia")
 #' 
+#' \donttest{
 #' #run wrapper
 #' gause_out<-gause_wrapper(time=time, species=species)
 #' 
@@ -45,6 +46,7 @@
 #'            start = list(pars_full=pars_full),
 #'            data=fittigdata)
 #' summary(mod)
+#' }
 
 ode_prediction<-function(pars_full, time, N) {
   Nuse<-unique(N)

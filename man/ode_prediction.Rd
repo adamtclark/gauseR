@@ -34,6 +34,7 @@ time<-mixturedat$Day
 species<-data.frame(mixturedat$Volume_Species1, mixturedat$Volume_Species2)
 colnames(species)<-c("P_caudatum", "P_aurelia")
 
+\donttest{
 #run wrapper
 gause_out<-gause_wrapper(time=time, species=species)
 
@@ -55,6 +56,7 @@ mod<-nls(y~ode_prediction(pars_full, time, N),
            start = list(pars_full=pars_full),
            data=fittigdata)
 summary(mod)
+}
 }
 \concept{Gause}
 \concept{competition}
